@@ -48,8 +48,11 @@ function drawPost(data) {
     let story = document.createElement('p')
 
     title.textContent = data.title
+    title.classList.add("title")
     pseudonym.textContent = data.pseudonym
+    pseudonym.classList.add("pseudonym")
     story.textContent = data.story
+    story.classList.add("story")
 
     card.append(title)
     card.append(pseudonym)
