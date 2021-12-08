@@ -1,5 +1,5 @@
 # anonymous-posts-site
-create posts anonymously that are saved to a database
+Create posts anonymously that are saved to a local database
 ## Installation & Usage
 ### Installation
 - Clone the Repo
