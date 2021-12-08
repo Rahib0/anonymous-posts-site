@@ -1,5 +1,6 @@
 # anonymous-posts-site
 By Rahib Rahman & Souheil Fenghour
+### Description
 Create posts anonymously that are saved to a local database
 ## Installation & Usage
 ### Installation
