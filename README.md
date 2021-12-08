@@ -1,7 +1,7 @@
 # anonymous-posts-site
 By Rahib Rahman & Souheil Fenghour
 ### Description
-Create posts anonymously that are saved to a local database
+Create posts anonymously, similar to [Telegraph](https://telegra.ph/) that are saved to a local database
 ## Installation & Usage
 ### Installation
 - Clone the Repo
