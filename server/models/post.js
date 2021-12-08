@@ -23,10 +23,9 @@ class Posts {
     static async create(postData) {
         return new Promise (async (resolve, reject) => {
             try {
-                const { title, pseudonym, story} = postData;
-                let postsData = await db.query('INSERT INTO posts (title, pseudonym, story) VALUES ($1, $2, $3) RETURNING *;', [ title, pseudonym, story ]);
-                let book = await new Book(authorData.rows[0])
-                resolve (book);
+                let postsData = await db.query('INSERT INTO posts (title, pseudonym, story) VALUES ($1, $2, $3) RETURNING *;', [ postData.title, postData.pseudonym, postData.story ]);
+                let post = await new Posts(postsData.rows[0])
+                resolve (post);
             } catch (err) {
                 reject('Post could not be created');
             }

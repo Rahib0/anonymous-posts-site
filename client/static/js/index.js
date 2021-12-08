@@ -4,14 +4,15 @@ const form = document.querySelector('#form')
 form.addEventListener('submit', sendData)
 
 async function sendData(e) {
-    e.preventDefault
+    e.preventDefault()
     try {
         const options = {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
         }
-        const res = await fetch('http://localhost:3000/books', options);
+        console.log(options.body)
+        const res = await fetch('http://localhost:3000/posts', options);
         const { id, err } = await res.json();
         if(err) { 
             throw Error(err) 
@@ -25,11 +26,12 @@ async function sendData(e) {
 
 async function getData() {
     try {
-        console.log("hello")
-        res = await fetch('http://localhost:3000/')
-        console.log(res)
+        // console.log("hello")
+        res = await fetch('http://localhost:3000/posts')
+        // console.log(res)
         data = res.json()
-        console.log(data.posts)
+        // console.log(data.posts)
+        if (!data.posts) { throw new Error("no posts")}
         data.posts.forEach(post => {
             drawPost(post)
         });
