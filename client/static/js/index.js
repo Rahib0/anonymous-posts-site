@@ -1,10 +1,9 @@
-const { post } = require("../../../server/app")
 
 const form = document.querySelector('#form')
 
 form.addEventListener('submit', sendData)
 
-function sendData(e) {
+async function sendData(e) {
     e.preventDefault
     try {
         const options = {
@@ -13,7 +12,7 @@ function sendData(e) {
             body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
         }
         const res = await fetch('http://localhost:3000/books', options);
-        const { id, err } = await response.json();
+        const { id, err } = await res.json();
         if(err) { 
             throw Error(err) 
         } else {
@@ -26,9 +25,12 @@ function sendData(e) {
 
 async function getData() {
     try {
+        console.log("hello")
         res = await fetch('http://localhost:3000/')
-        data = await res.json()
-        data.forEach(post => {
+        console.log(res)
+        data = res.json()
+        console.log(data.posts)
+        data.posts.forEach(post => {
             drawPost(post)
         });
     } catch(err) {
