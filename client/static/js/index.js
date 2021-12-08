@@ -17,7 +17,7 @@ async function sendData(e) {
         if(err) { 
             throw Error(err) 
         } else {
-            getData()
+            window.location.reload()
         }
     } catch(err) {
         console.log(err)
@@ -27,12 +27,13 @@ async function sendData(e) {
 async function getData() {
     try {
         // console.log("hello")
-        res = await fetch('http://localhost:3000/posts')
+        let res = await fetch('http://localhost:3000/posts')
         // console.log(res)
-        data = res.json()
+        let data = await res.json()
+        console.log(data)
         // console.log(data.posts)
-        if (!data.posts) { throw new Error("no posts")}
-        data.posts.forEach(post => {
+        if (!data) { throw new Error("no posts")}
+        data.forEach(post => {
             drawPost(post)
         });
     } catch(err) {
