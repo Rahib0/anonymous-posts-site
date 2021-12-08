@@ -24,7 +24,7 @@ class Posts {
         return new Promise (async (resolve, reject) => {
             try {
                 let postsData = await db.query('INSERT INTO posts (title, pseudonym, story) VALUES ($1, $2, $3) RETURNING *;', [ postData.title, postData.pseudonym, postData.story ]);
-                let post = await new Posts(postsData.rows[0])
+                let post = new Posts(postsData.rows[0])
                 resolve (post);
             } catch (err) {
                 reject('Post could not be created');
@@ -32,6 +32,17 @@ class Posts {
         });
     }
 
+    static async findByID(id) {
+        return new Promise (async (resolve, reject) => {
+            try {
+                let postData = await db.query('SELECT * FROM posts WHERE id = $1;', [ id ]);
+                let post = new Posts(postData.rows[0]);
+                resolve (post);
+            } catch (err) {
+                reject('Post not found');
+            }
+        });
+    }
 }
 
 module.exports = Posts

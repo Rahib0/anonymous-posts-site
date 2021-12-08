@@ -2,6 +2,7 @@
 const form = document.querySelector('#form')
 
 form.addEventListener('submit', sendData)
+window.addEventListener('hashchange', updateContent)
 
 async function sendData(e) {
     e.preventDefault()
@@ -17,7 +18,11 @@ async function sendData(e) {
         if(err) { 
             throw Error(err) 
         } else {
-            window.location.reload()
+            document.querySelector('#title').value = ''
+            document.querySelector('#pseudonym').value = ''
+            document.querySelector('#story').value = ''
+            window.location.hash = `#${id}`
+            updateContent()
         }
     } catch(err) {
         console.log(err)
@@ -41,6 +46,8 @@ async function getData() {
     }
 }
 
+
+
 function drawPost(data) {
     let card = document.createElement('div')
     let title = document.createElement('h2')
@@ -59,7 +66,24 @@ function drawPost(data) {
     card.append(story)
 
     let main = document.querySelector('main')
+    main.innerHTML = ""
     main.append(card)
 }
 
-getData()
+async function updateContent() {
+    let hash = window.location.hash.substring(1);
+    if (hash) {
+        let form = document.querySelector('#form')
+        form.style.display = 'none'
+        let res = await fetch(`http://localhost:3000/posts/${hash}`)
+        let data = await res.json()
+        drawPost(data)
+    } else {
+        let form = document.querySelector('#form')
+        form.style.display = 'block'
+        let main = document.querySelector('main')
+        main.innerHTML = ""
+    }
+}
+
+updateContent()

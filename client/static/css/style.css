@@ -1,3 +1,7 @@
+#form {
+    display: none;
+}
+
 #submit{
     font-family:CustomSansSerif,'Lucida Grande',Arial,sans-serif;
     font-weight:600;font-style:normal;

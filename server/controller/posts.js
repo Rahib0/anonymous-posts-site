@@ -11,6 +11,16 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/:id',async (req, res) => {
+    try {
+        const post = await Post.findByID(req.params.id)
+        res.status(200).json(post)
+    } catch(err) {
+        res.status(500).json({err})
+    }
+})
+
+
 router.post('/', async (req, res) => {
     try {
         const post = await Post.create(req.body);
@@ -20,6 +30,6 @@ router.post('/', async (req, res) => {
     }
 })
 
-// router.get('/:id', )
+
 
 module.exports = router
