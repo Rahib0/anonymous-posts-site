@@ -5,7 +5,7 @@ Create posts anonymously, similar to [Telegraph](https://telegra.ph/) that are s
 ## Installation & Usage
 ### Installation
 - Clone the Repo
-### Usage
+### Usage 
 - Open terminal into the main folder
 - run command `bash _scripts/start.sh`
 - Navigate to client folder and run index.html in live server or just open html in the folder
