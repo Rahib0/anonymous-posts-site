@@ -8,6 +8,6 @@ Create posts anonymously, similar to [Telegraph](https://telegra.ph/) that are s
 ### Usage
 - Open terminal into the main folder
 - run command `bash _scripts/start.sh`
-- Navigate to client folder and run index.html in live server or just in the folder
+- Navigate to client folder and run index.html in live server or just open html in the folder
 - Once finished with the server, press ctrl + C in terminal and run command `bash _scripts/teardown` in the root directory to stop all services and remove all posts from the db
 - If you want the posts to persist, use command `bath _scripts/stop.sh` in the root directory
